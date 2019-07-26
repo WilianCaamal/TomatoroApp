@@ -12,8 +12,8 @@ namespace TomatoroApp
 {
     public partial class frmMain : Form
     {
-        private int minutos = 59;
-        private int segundos = 59;
+        private int minutos = 20;
+        private int segundos = 0;
         string tiempoRestante = String.Empty;
         bool pausa = false;
 
@@ -29,34 +29,46 @@ namespace TomatoroApp
             {
                 Timer.Stop();
                 BtnIniciar.Text = "Iniciar";
+                BtnIniciar.Image = Properties.Resources.play_24px;
                 pausa = false;
             }
             else
             {
                 Timer.Start();
                 BtnIniciar.Text = "Pausar";
+                BtnIniciar.Image = Properties.Resources.pause_24px;
                 pausa = true;
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void MostrarTiempo()
         {
             if (minutos.ToString().Length == 1)
             {
                 if (segundos.ToString().Length == 1)
                 {
-                    LbTiempo.Text = $" 0{minutos}:0{segundos}";
+                    LbTiempo.Text = $"0{minutos}:0{segundos}";
                 }
                 else
                 {
-                    LbTiempo.Text = $" 0{minutos}:{segundos}";
+                    LbTiempo.Text = $"0{minutos}:{segundos}";
                 }
             }
             else
             {
-                LbTiempo.Text = $" {minutos}:{segundos}";
+                if (segundos.ToString().Length == 1)
+                {
+                    LbTiempo.Text = $"{minutos}:0{segundos}";
+                }
+                else
+                {
+                    LbTiempo.Text = $"{minutos}:{segundos}";
+                }
             }
+        }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
             if (minutos != 0)
             {
                 if (segundos != 0)
@@ -79,24 +91,42 @@ namespace TomatoroApp
                 {
                     Timer.Stop();
                     BtnIniciar.Text = "Iniciar";
-                    MessageBox.Show("Tiempo Terminado");
+                    BtnIniciar.Image = Properties.Resources.play_24px;
+                    MostrarNotificacion();
                 }
             }
+
+            MostrarTiempo();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            minutos = 1;
-            segundos = 10;
             tiempoRestante = String.Empty;
             pausa = false;
-            LbTiempo.Text = $" {minutos}:{segundos}";
+            MostrarTiempo();
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
         {
-            segundos = 10;
-            LbTiempo.Text = $" {minutos}:{segundos}";
+            Timer.Stop();
+            minutos = 20;
+            segundos = 0;
+            MostrarTiempo();
+            BtnIniciar.Text = "Iniciar";
+            BtnIniciar.Image = Properties.Resources.play_24px;
+            pausa = false;
+
+        }
+
+        private void MostrarNotificacion()
+        {
+            Icon icon = Properties.Resources.icono;
+            Notificacion.Icon = icon;
+            Notificacion.Text = "El tiempo a concluido";
+            Notificacion.Visible = true;
+            Notificacion.BalloonTipTitle = "Tomatoro App";
+            Notificacion.BalloonTipText = "El tiempo a concluido"; 
+            Notificacion.ShowBalloonTip(1000);
         }
     }
 }
