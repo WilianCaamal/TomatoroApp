@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomatoroApp", "TomatoroApp\TomatoroApp.csproj", "{783BF4AD-941B-420D-8D29-46CFC789BDCE}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PomodoroAppIntaller", "PomodoroAppIntaller\PomodoroAppIntaller.vdproj", "{26A7EAC3-CBEF-480D-8770-CA8A7D70C6B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{783BF4AD-941B-420D-8D29-46CFC789BDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783BF4AD-941B-420D-8D29-46CFC789BDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783BF4AD-941B-420D-8D29-46CFC789BDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26A7EAC3-CBEF-480D-8770-CA8A7D70C6B1}.Debug|Any CPU.ActiveCfg = Debug
+		{26A7EAC3-CBEF-480D-8770-CA8A7D70C6B1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
