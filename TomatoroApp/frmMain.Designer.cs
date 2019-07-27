@@ -30,31 +30,36 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnDescanso = new System.Windows.Forms.Button();
             this.LbTiempo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.Notificacion = new System.Windows.Forms.NotifyIcon(this.components);
             this.BtnReset = new System.Windows.Forms.Button();
             this.BtnIniciar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnPonodoro = new System.Windows.Forms.Button();
+            this.BtnConfig = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button2
+            // BtnDescanso
             // 
-            this.button2.Location = new System.Drawing.Point(208, 19);
-            this.button2.Margin = new System.Windows.Forms.Padding(10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 41);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Descanso corto";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnDescanso.Image = global::TomatoroApp.Properties.Resources.break_24px1;
+            this.BtnDescanso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnDescanso.Location = new System.Drawing.Point(178, 41);
+            this.BtnDescanso.Margin = new System.Windows.Forms.Padding(10);
+            this.BtnDescanso.Name = "BtnDescanso";
+            this.BtnDescanso.Size = new System.Drawing.Size(94, 41);
+            this.BtnDescanso.TabIndex = 1;
+            this.BtnDescanso.Text = "Descanso";
+            this.BtnDescanso.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnDescanso.UseVisualStyleBackColor = true;
+            this.BtnDescanso.Click += new System.EventHandler(this.BtnDescanso_Click);
             // 
             // LbTiempo
             // 
             this.LbTiempo.AutoSize = true;
             this.LbTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.LbTiempo.Location = new System.Drawing.Point(146, 80);
+            this.LbTiempo.Location = new System.Drawing.Point(116, 102);
             this.LbTiempo.Margin = new System.Windows.Forms.Padding(10);
             this.LbTiempo.Name = "LbTiempo";
             this.LbTiempo.Size = new System.Drawing.Size(102, 39);
@@ -64,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 190);
+            this.label2.Location = new System.Drawing.Point(24, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 6;
@@ -84,7 +89,7 @@
             // 
             this.BtnReset.Image = global::TomatoroApp.Properties.Resources.repeat_24px;
             this.BtnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnReset.Location = new System.Drawing.Point(208, 139);
+            this.BtnReset.Location = new System.Drawing.Point(178, 161);
             this.BtnReset.Margin = new System.Windows.Forms.Padding(10);
             this.BtnReset.Name = "BtnReset";
             this.BtnReset.Size = new System.Drawing.Size(70, 41);
@@ -98,7 +103,7 @@
             // 
             this.BtnIniciar.Image = global::TomatoroApp.Properties.Resources.play_24px;
             this.BtnIniciar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIniciar.Location = new System.Drawing.Point(120, 139);
+            this.BtnIniciar.Location = new System.Drawing.Point(90, 161);
             this.BtnIniciar.Margin = new System.Windows.Forms.Padding(10);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(68, 41);
@@ -108,30 +113,54 @@
             this.BtnIniciar.UseVisualStyleBackColor = true;
             this.BtnIniciar.Click += new System.EventHandler(this.BtnIniciar_Click);
             // 
-            // button1
+            // BtnPonodoro
             // 
-            this.button1.Image = global::TomatoroApp.Properties.Resources.tomato_24px;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(94, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 41);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Pomodoro";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnPonodoro.Image = global::TomatoroApp.Properties.Resources.tomato_24px;
+            this.BtnPonodoro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnPonodoro.Location = new System.Drawing.Point(64, 41);
+            this.BtnPonodoro.Margin = new System.Windows.Forms.Padding(10);
+            this.BtnPonodoro.Name = "BtnPonodoro";
+            this.BtnPonodoro.Size = new System.Drawing.Size(94, 41);
+            this.BtnPonodoro.TabIndex = 0;
+            this.BtnPonodoro.Text = "Pomodoro";
+            this.BtnPonodoro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnPonodoro.UseVisualStyleBackColor = true;
+            this.BtnPonodoro.Click += new System.EventHandler(this.BtnPonodoro_Click);
+            // 
+            // BtnConfig
+            // 
+            this.BtnConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnConfig.BackColor = System.Drawing.Color.Transparent;
+            this.BtnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnConfig.FlatAppearance.BorderSize = 0;
+            this.BtnConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.BtnConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.BtnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfig.Image = global::TomatoroApp.Properties.Resources.settings_24px;
+            this.BtnConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnConfig.Location = new System.Drawing.Point(289, -3);
+            this.BtnConfig.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnConfig.Name = "BtnConfig";
+            this.BtnConfig.Size = new System.Drawing.Size(45, 45);
+            this.BtnConfig.TabIndex = 7;
+            this.BtnConfig.Text = "Config";
+            this.BtnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnConfig.UseVisualStyleBackColor = false;
+            this.BtnConfig.Click += new System.EventHandler(this.BtnConfig_Click);
             // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(390, 214);
+            this.ClientSize = new System.Drawing.Size(334, 241);
+            this.Controls.Add(this.BtnConfig);
             this.Controls.Add(this.BtnReset);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.LbTiempo);
             this.Controls.Add(this.BtnIniciar);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnDescanso);
+            this.Controls.Add(this.BtnPonodoro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tomatoro App";
@@ -143,13 +172,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnPonodoro;
+        private System.Windows.Forms.Button BtnDescanso;
         private System.Windows.Forms.Button BtnIniciar;
         private System.Windows.Forms.Button BtnReset;
         private System.Windows.Forms.Label LbTiempo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.NotifyIcon Notificacion;
+        private System.Windows.Forms.Button BtnConfig;
     }
 }

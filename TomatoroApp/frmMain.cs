@@ -14,6 +14,7 @@ namespace TomatoroApp
     {
         private int minutos = 20;
         private int segundos = 0;
+        private int descanso = 0;
         string tiempoRestante = String.Empty;
         bool pausa = false;
 
@@ -30,6 +31,8 @@ namespace TomatoroApp
                 Timer.Stop();
                 BtnIniciar.Text = "Iniciar";
                 BtnIniciar.Image = Properties.Resources.play_24px;
+                BtnDescanso.Enabled = true;
+                BtnPonodoro.Enabled = true;
                 pausa = false;
             }
             else
@@ -37,6 +40,8 @@ namespace TomatoroApp
                 Timer.Start();
                 BtnIniciar.Text = "Pausar";
                 BtnIniciar.Image = Properties.Resources.pause_24px;
+                BtnDescanso.Enabled = false;
+                BtnPonodoro.Enabled = false;
                 pausa = true;
             }
         }
@@ -103,13 +108,20 @@ namespace TomatoroApp
         {
             tiempoRestante = String.Empty;
             pausa = false;
+            CargarConfiguracion();
             MostrarTiempo();
+        }
+
+        public void CargarConfiguracion()
+        {
+            minutos = Properties.Settings.Default.TiempoSesion;
+            descanso = Properties.Settings.Default.Descanso;
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
         {
             Timer.Stop();
-            minutos = 20;
+            CargarConfiguracion();
             segundos = 0;
             MostrarTiempo();
             BtnIniciar.Text = "Iniciar";
@@ -127,6 +139,34 @@ namespace TomatoroApp
             Notificacion.BalloonTipTitle = "Tomatoro App";
             Notificacion.BalloonTipText = "El tiempo a concluido"; 
             Notificacion.ShowBalloonTip(1000);
+        }
+
+        private void BtnConfig_Click(object sender, EventArgs e)
+        {
+            frmConfiguracion configuracion = new frmConfiguracion();
+            if (configuracion.ShowDialog() == DialogResult.Yes)
+            {
+                CargarConfiguracion();
+            }
+        }
+
+        private void BtnDescanso_Click(object sender, EventArgs e)
+        {
+            Timer.Stop();
+            minutos = Properties.Settings.Default.Descanso;
+            MostrarTiempo();
+            BtnIniciar.Text = "Iniciar";
+            BtnIniciar.Image = Properties.Resources.play_24px;
+        }
+
+        private void BtnPonodoro_Click(object sender, EventArgs e)
+        {
+            Timer.Stop();
+            minutos = Properties.Settings.Default.TiempoSesion;
+            segundos = 0;
+            MostrarTiempo();
+            BtnIniciar.Text = "Iniciar";
+            BtnIniciar.Image = Properties.Resources.play_24px;
         }
     }
 }

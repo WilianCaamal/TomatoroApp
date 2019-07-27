@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfiguracion.Designer.cs">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmConfiguracion.resx">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,9 +100,15 @@
     <None Include="Resources\play_button_circled_24px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\save_24px.png" />
+    <None Include="Resources\settings_24px.png" />
+    <None Include="Resources\sleep_24px.png" />
     <None Include="Resources\repeat_24px.png" />
     <None Include="Resources\circled_play_24px.png" />
     <None Include="Resources\circled_pause_24px.png" />
+    <None Include="Resources\break_24px.png" />
+    <None Include="Resources\break_24px1.png" />
+    <None Include="Resources\cancel_24px.png" />
     <Content Include="Resources\icono.ico" />
     <None Include="Resources\pause_24px.png" />
     <None Include="Resources\play_24px.png" />
